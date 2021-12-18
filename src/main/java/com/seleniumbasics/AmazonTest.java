@@ -7,7 +7,7 @@ public class AmazonTest {
 		br.initDriver("chrome");
 
 		br.launchUrl("https://www.amazon.com");
-
+		System.out.println("url is launched");
 		String title = br.getPageTitle();
 		System.out.println(title);
 
