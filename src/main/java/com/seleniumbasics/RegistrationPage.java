@@ -7,6 +7,7 @@ public class RegistrationPage {
 
 	public void signup() {
 		System.out.println("signup page");
+		System.out.println("added page action");
 	}
 
 	public static void main(String[] args) {
