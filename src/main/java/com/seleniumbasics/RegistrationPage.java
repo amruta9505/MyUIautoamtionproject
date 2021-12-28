@@ -9,6 +9,10 @@ public class RegistrationPage {
 		System.out.println("signup page");
 		System.out.println("added page action");
 	}
+	public void signin() {
+		System.out.println("signin page");
+		System.out.println("added page action");
+	}
 
 	public static void main(String[] args) {
 
