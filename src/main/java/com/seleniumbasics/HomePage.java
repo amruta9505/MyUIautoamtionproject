@@ -4,6 +4,7 @@ public class HomePage {
 
 	public HomePage() {
 		System.out.println("home page class");
+		System.out.println("updated");
 	}
 
 	public void logoHome() {
