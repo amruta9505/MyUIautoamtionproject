@@ -3,11 +3,14 @@ package com.seleniumbasics;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtil {
 	private WebDriver driver;
@@ -251,6 +254,73 @@ public class ElementUtil {
 			itemvaluelist.add(text);
 		}
 		return itemvaluelist;
+	}
+
+//*******************************************************waitutils******************************************
+	/**
+	 * 
+	 * @param timeout
+	 * @return String
+	 */
+	
+	public Alert waitForJSAlert(int timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+
+	public void acceptAlert(int timeout) {
+		waitForJSAlert(timeout).accept();
+	}
+
+	public void dismissAlert(int timeout) {
+		waitForJSAlert(timeout).dismiss();
+	}
+
+	public String getTextOnAlert(int timeout) {
+		return waitForJSAlert(timeout).getText();
+	}
+
+	public void sendKeysToAlert(int timeout, String value) {
+		waitForJSAlert(timeout).sendKeys(value);
+	}
+	
+	/**
+	 * 
+	 * @param timeOut
+	 * @param UrlFraction
+	 * @return boolean
+	 */
+	public  boolean waitForUrlContains(int timeOut, String UrlFraction) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+		return wait.until(ExpectedConditions.urlContains(UrlFraction)); 
+	}
+	
+	public  boolean waitForUrlToBe(int timeOut, String url) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+		return wait.until(ExpectedConditions.urlToBe(url)) ;
+		 
+	}
+
+	
+	/**
+	 * 
+	 * @param locator
+	 * @param timeout
+	 * @param intervaltime
+	 * @return
+	 */
+	public WebElement waitForElementToPresent(By locator, int timeout, long intervaltime) {
+
+		WebDriverWait wait = new WebDriverWait(driver, timeout, intervaltime);
+		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
+	}
+
+	public WebElement waitForElementToPresent(By locator, int timeout) {
+
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
 	}
 
 }
